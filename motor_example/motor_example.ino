@@ -8,8 +8,8 @@
 // speed you can always choose another digital pin and write HIGH or LOW.
 const unsigned int MotorForwardPin  = 3; // Note: You will have to check which pin is forward and 
 const unsigned int MotorBackwardPin = 5; //       which is backward based on how you wired your
-                                         //       H-Bridge. There is no correct way since motors
-                                         //       are not polarized. todo: correct wording? polarized?
+                                         //       H-Bridge. There is no correct way since it will
+                                         //       depend on the way that your motors are wired.
 
 enum Direction {FORWARD, BACKWARD}; // We can create enums in Arduino just like in c++
 

@@ -1,7 +1,7 @@
-#**McMaster Sumobot - Junior Competition Resources**
+# **McMaster Sumobot - Junior Competition Resources**
 Welcome to the homepage of the McMaster Sumobot sample code for Junior competitors! The projects are broken down into sections that introduce you to coding in the Arduino language, as well as going through the basic design stages for implementing your code.
 
-###Examples
+### Examples
 The below examples are designed to give you an intro to the arduino language, as well as provide a generic skeleton for your fully implemented code.
 
 1. [The Basics - Qrds](https://github.com/McMasterSumobot/Beginner-Tutorials/tree/master/qrd_example)
