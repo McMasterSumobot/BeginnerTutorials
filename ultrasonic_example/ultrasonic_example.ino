@@ -44,7 +44,6 @@ void printUltrasonicDistance() {
                                        // be able to get more acurate readings using your own
                                        // implementation.
 
-  //todo: confirm that this ACTUALLY works... We know Arduino doesn't like switch statements...
   // You can use switch statements in your code just like in c++ Hint: Maybe this could be useful
   // for designing your logic?
   switch (range) {
