@@ -25,14 +25,14 @@ const unsigned int MAX_DISTANCE = 100; // maximum distance that the sensor will 
 // code in the library, it's pretty straight forward.
 NewPing leftSonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 
-setup() {
+void setup() {
   pinMode(TRIGGER_PIN, OUTPUT); // needs to be an output in order to send a pulse to the sensor
   pinMode(ECHO_PIN, INPUT); // needs to be an input in order to receive values from the sensor
 
   Serial.begin(9600);
 }
 
-loop() { // Using local methods to keep our loop() easy to read
+void loop() { // Using local methods to keep our loop() easy to read
   printUltrasonicDistance();
   delay(1000);
 }

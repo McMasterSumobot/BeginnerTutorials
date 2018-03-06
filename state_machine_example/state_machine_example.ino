@@ -11,11 +11,11 @@
 StateController stateController = new StateController(); // Create an instance of a StateController which
                                                          // is going to be what drives our state machine
 
-setup() {
+void setup() {
   // Usual set up process, pins, serial monitor etc
 }
 
-loop() {
+void loop() {
   switch (stateController.getState()) { // Change logic based on our current state
     case QRDS_TRIPPED:
       moveAwayFromTheEdge();
