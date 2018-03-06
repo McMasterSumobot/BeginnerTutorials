@@ -1,9 +1,9 @@
 /**
  * Author: Braden Corbold - Level IV Mechatronics McMaster University
- * Date: 01/02/2017
+ * Date: 05/03/2018
  */
 
-#include <Ultrasonic.h> // This type of import is used for using libraries that have been imported to the
+#include <NewPing.h> // This type of import is used for using libraries that have been imported to the
                         // arduino library. This is the recomended way since you don't have to have the
                         // source files in your project.
 #include "ultrasonic_example.h" // This is another way to import files however the file MUST exist in the
@@ -12,20 +12,22 @@
                                 // keep our code nice and clean. If you have written a c++ class that 
                                 // like to use for only this project. 
 
-const unsigned int TxPin = 12; // TX is the transmition pin (it will output a pulse to the sensor)
-const unsigned int RxPin = 13; // RX is the receiving pin (it will read the output from the sensor)
+const unsigned int TRIGGER_PIN = 12; // transmition pin (it will output a pulse to the sensor)
+const unsigned int ECHO_PIN = 13; // receiving pin (it will read the output from the sensor)
+const unsigned int MAX_DISTANCE = 100; // maximum distance that the sensor will look for in cm
 
-Ultrasonic leftSonar(TxPin, RxPin); // Creates an Ultrasonic object. This uses the imported library to
-                                    // handle everything needed in order to read a distance. When you
-                                    // call Ranging(<Unit>) on it, it will send a pulse through TxPin
-                                    // and wait for readings on the RxPin. Once it has the values it will
-                                    // conver it to either CMs or INCHes based on the unit you specified.
-                                    // If you'd like to look more into how it works check out the source
-                                    // code in the library, it's pretty straight forward.
+// Creates an NewPing object. This uses the imported library to
+// handle everything needed in order to read a distance. When you
+// call ping_cm() on it, it will send a pulse through TRIGGER_PIN
+// and wait for readings on the ECHO_PIN. Once it has the values it will
+// return an integer of the CMs to the detected object.
+// If you'd like to look more into how it works check out the source
+// code in the library, it's pretty straight forward.
+NewPing leftSonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 
 setup() {
-  pinMode(TxPin, OUTPUT); // TX needs to be an output in order to send a pulse to the sensor
-  pinMode(RxPin, INPUT); // RX needs to be an input in order to receive values from the sensor
+  pinMode(TRIGGER_PIN, OUTPUT); // needs to be an output in order to send a pulse to the sensor
+  pinMode(ECHO_PIN, INPUT); // needs to be an input in order to receive values from the sensor
 
   Serial.begin(9600);
 }
@@ -36,10 +38,8 @@ loop() { // Using local methods to keep our loop() easy to read
 }
 
 void printUltrasonicDistance() {
-  int leftVal = leftSonar.Ranging(CM); // The Ultrasonic library takes care of all of the timing needed
-  Range range = cmToEnum(distance);    // to read the distance. It outputs the distance as an int in cm
-                                       // but also works in INCH if you would like although it is not
-                                       // recommended. You can always look into the source code to see 
+  int distance = leftSonar.ping_cm();  // The NewPing library takes care of all of the timing needed
+  Range range = cmToEnum(distance);    // to read the distance. You can always look into the source code to see 
                                        // how it is implemented. With enough time and calibration you may
                                        // be able to get more acurate readings using your own
                                        // implementation.
